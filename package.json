@@ -1,0 +1,7 @@
+{
+  "name": "online-shop-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Luke Gu <mythnan@gmail.com>",
+  "license": "MIT"
+}
