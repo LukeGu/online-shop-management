@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 class PageTitle extends Component {
   componentWillMount() {
-    document.title = this.props.title + " - ONLINE SHOP";
+    document.title = this.props.title + " - OSM";
   }
   render() {
     return (
