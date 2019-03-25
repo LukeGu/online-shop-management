@@ -12,6 +12,7 @@ import Home from "page/home/index.jsx";
 import Login from "page/login/index.jsx";
 import ErrorPage from "page/error/index.jsx";
 import UserList from "page/user/index.jsx";
+import ProductRouter from "page/product/router.jsx";
 
 import Layout from "component/layout/index.jsx";
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/product" component={Home} />
+          <Route path="/product" component={ProductRouter} />
           <Route path="/category" component={Home} />
           <Route path="/order" component={Home} />
           <Route path="/user" component={UserList} />

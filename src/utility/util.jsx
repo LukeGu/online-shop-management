@@ -16,7 +16,7 @@ class Util {
           } else if (1 === res.status) {
             typeof reject === "function" && reject("Wrong Password!");
           } else {
-            console.log(res.msg);
+            //console.log(res.msg);
             typeof reject === "function" && reject(res.msg || res.data);
           }
         },
@@ -37,6 +37,10 @@ class Util {
       reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"),
       result = queryString.match(reg);
     return result ? decodeURIComponent(result[2]) : null;
+  }
+  //success Tips
+  successTips(successMsg) {
+    alert(successMsg || "Succeeded!");
   }
   //error Tips
   errorTips(errMsg) {

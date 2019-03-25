@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import Pagination from "utility/pagination/index.jsx";
-import TableList from "utility/tableList/index.jsx";
 import PageTitle from "component/pageTitle/index.jsx";
 import Util from "utility/util.jsx";
 import User from "service/userService.jsx";
@@ -15,7 +14,8 @@ class UserList extends Component {
     super(props);
     this.state = {
       list: [],
-      pageNum: 1
+      pageNum: 1,
+      firstLoading: true
     };
   }
 
@@ -26,7 +26,9 @@ class UserList extends Component {
   loadUserList() {
     _user.getUserList(this.state.pageNum).then(
       res => {
-        this.setState(res);
+        this.setState(res, () => {
+          this.setState({ firstLoading: false });
+        });
       },
       err => {
         this.setState({ list: [] });
@@ -58,20 +60,33 @@ class UserList extends Component {
         </tr>
       );
     });
+    let listError = (
+      <tr>
+        <td colSpan="5" className="text-center">
+          {this.state.firstLoading ? "Loading..." : "Not Found User List"}
+        </td>
+      </tr>
+    );
+    let tableBody = this.state.list.length > 0 ? listBody : listError;
     return (
       <div id="page-wrapper">
         <PageTitle title="USER LIST" />
-        <TableList
-          tableHeads={[
-            "ID",
-            "Username",
-            "Email",
-            "Phone Number",
-            "Registration Time"
-          ]}
-        >
-          {listBody}
-        </TableList>
+        <div className="row">
+          <div className="col-md-12">
+            <table className="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th> Registration time</th>
+                </tr>
+              </thead>
+              <tbody>{tableBody}</tbody>
+            </table>
+          </div>
+        </div>
         <Pagination
           current={this.state.pageNum}
           total={this.state.total}
