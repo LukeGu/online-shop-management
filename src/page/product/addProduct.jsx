@@ -134,7 +134,7 @@ class ProductAdd extends Component {
   render() {
     return (
       <div id="page-wrapper">
-        <PageTitle title="PRODUCT LIST" />
+        <PageTitle title={this.state.id ? "EDIT PRODUCT" : "ADD NEW PRODUCT"} />
         <div className="form-horizontal">
           <div className="form-group">
             <label className="col-md-2 control-label">Product Name</label>

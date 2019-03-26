@@ -100,6 +100,23 @@ class Product {
       }
     });
   }
+  //
+  updateCategoryName(category) {
+    return _util.request({
+      type: "post",
+      url: "/manage/category/set_category_name.do",
+      data: category
+    });
+  }
+
+  //
+  addCategory(category) {
+    return _util.request({
+      type: "post",
+      url: "/manage/category/add_category.do",
+      data: category
+    });
+  }
 }
 
 export default Product;
