@@ -14,7 +14,7 @@ class Util {
             // login
             this.onLogin();
           } else if (1 === res.status) {
-            typeof reject === "function" && reject("Wrong Password!");
+            typeof reject === "function" && reject("Wrong!");
           } else {
             //console.log(res.msg);
             typeof reject === "function" && reject(res.msg || res.data);
